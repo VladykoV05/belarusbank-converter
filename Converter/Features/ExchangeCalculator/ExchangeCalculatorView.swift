@@ -1,16 +1,16 @@
 import SwiftUI
 
-struct ConverterView: View {
-    @State private var viewModel: ConverterViewModel
+struct ExchangeCalculatorView: View {
+    @State private var viewModel: ExchangeCalculatorViewModel
 
     init(branch: BankBranch) {
-        _viewModel = State(initialValue: ConverterViewModel(branch: branch))
+        _viewModel = State(initialValue: ExchangeCalculatorViewModel(branch: branch))
     }
 
     var body: some View {
         Form {
             if viewModel.isSelectedCurrencyAvailable {
-                calculatorForm
+                exchangeForm
             } else {
                 unavailableCurrencyForm
             }
@@ -18,7 +18,7 @@ struct ConverterView: View {
         .navigationTitle("Калькулятор валют")
     }
 
-    private var calculatorForm: some View {
+    private var exchangeForm: some View {
         Group {
             Picker("Режим", selection: $viewModel.direction) {
                 Text("Купить \(viewModel.selectedCurrency.rawValue)").tag(ExchangeDirection.buy)
@@ -67,7 +67,7 @@ struct ConverterView: View {
     private var unavailableCurrencyForm: some View {
         Section {
             Picker("Валюта", selection: $viewModel.selectedCurrency) {
-                ForEach(Currency.calculator) { currency in
+                ForEach(Currency.exchangeCalculator) { currency in
                     Text(currency.rawValue).tag(currency)
                 }
             }

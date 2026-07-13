@@ -7,7 +7,7 @@ iOS-приложение для просмотра курсов валют и к
 - Список отделений с поиском и фильтрацией
 - Избранные отделения (SwiftData)
 - Курсы покупки/продажи по валютам
-- Калькулятор обмена с учётом номиналов
+- Калькулятор обмена (`ExchangeCalculator`) с учётом номиналов
 - Оффлайн-кэш на 24 часа
 
 ## Архитектура
@@ -27,24 +27,26 @@ Converter/
 │   ├── Extensions/
 │   └── Errors/
 ├── Features/
-│   ├── Root/               # ContentView
+│   ├── Root/               # ContentView — навигация
 │   ├── BranchSelection/    # View + ViewModel
-│   ├── BranchDetails/
-│   ├── Rates/
-│   └── Converter/          # View + ViewModel
+│   ├── BranchDetails/      # TabView отделения
+│   ├── Rates/              # View — список курсов
+│   └── ExchangeCalculator/ # View + ViewModel — калькулятор обмена
 └── Shared/
     └── Components/         # SearchBar, ErrorView, OfflineBanner
 ```
 
-### Принципы
+### Роли и папки
 
-| Слой | Ответственность |
-|---|---|
-| **View** | Только UI, без бизнес-логики |
-| **ViewModel** | Состояние экрана, фильтрация, вызов репозиториев |
-| **Repository** | Источник данных: API + кэш |
-| **Service** | Чистая бизнес-логика (конвертация валют) |
-| **Protocol** | Зависимости через протоколы — удобно для тестов |
+| Роль | Папка | Ответственность |
+|---|---|---|
+| **App** | `App/` | Запуск, DI-контейнер |
+| **View** | `Features/`, `Shared/` | UI без бизнес-логики |
+| **ViewModel** | `Features/` | Состояние экрана (`ExchangeCalculatorViewModel` и др.) |
+| **Model** | `Core/Models/` | Структуры данных |
+| **Repository** | `Core/Repositories/`, `Core/Persistence/` | API, кэш, SwiftData |
+| **Networking** | `Core/Networking/` | HTTP-запросы |
+| **Service** | `Core/Services/` | Бизнес-логика (`CurrencyConverter`) |
 
 ### DI (Dependency Injection)
 

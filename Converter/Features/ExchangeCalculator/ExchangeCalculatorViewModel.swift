@@ -2,7 +2,7 @@ import Foundation
 
 @MainActor
 @Observable
-final class ConverterViewModel {
+final class ExchangeCalculatorViewModel {
     let branch: BankBranch
 
     var amount = "100"
@@ -17,7 +17,7 @@ final class ConverterViewModel {
     }
 
     var availableCurrencies: [Currency] {
-        Currency.calculator.filter { branch.hasCurrency($0) }
+        Currency.exchangeCalculator.filter { branch.hasCurrency($0) }
     }
 
     var isSelectedCurrencyAvailable: Bool {

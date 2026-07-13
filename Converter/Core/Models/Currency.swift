@@ -27,7 +27,7 @@ enum Currency: String, CaseIterable, Identifiable, Codable, Hashable {
 
     static let main: [Currency] = [.usd, .eur, .rub]
     static let secondary: [Currency] = [.gbp, .cad, .pln, .sek, .chf, .jpy, .cny, .czk, .nok]
-    static let calculator: [Currency] = [.usd, .eur, .rub, .pln, .cny, .gbp, .chf, .czk]
+    static let exchangeCalculator: [Currency] = [.usd, .eur, .rub, .pln, .cny, .gbp, .chf, .czk]
 }
 
 enum ExchangeDirection: Hashable {

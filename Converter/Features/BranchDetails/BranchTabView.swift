@@ -10,7 +10,7 @@ struct BranchTabView: View {
                     Label("Курсы", systemImage: "list.dash")
                 }
 
-            ConverterView(branch: branch)
+            ExchangeCalculatorView(branch: branch)
                 .tabItem {
                     Label("Калькулятор", systemImage: "arrow.left.arrow.right")
                 }
