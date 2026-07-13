@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../GameScene"
+		},
+		{
+			"path": "../GyroBallGame"
+		},
+		{
+			"path": "../MVVMDemoList"
+		},
+		{
+			"path": "../MyCalculator"
+		},
+		{
+			"path": "../MyDemoList"
+		},
+		{
+			"path": "../PrimitiveCalculator"
+		},
+		{
+			"path": "../../../AndroidStudioProjects"
+		}
+	]
+}
